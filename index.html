@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القاضية ممكن - تايمر</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        h1 {
+            font-size: 6em; 
+            margin: 0;
+        }
+        p {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+        .timer {
+            font-size: 4em; 
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>القاضية ممكن!</h1>
+    <p>الوقت المنقضي منذ هدف أفشة في نهائي القرن</p>
+    <div class="timer" id="timer"></div>
+
+    <script>
+        function updateTimer() {
+            // وقت الهدف: الجمعة 27 نوفمبر 2020 الساعة 10:40 مساءً
+            const goalTime = new Date("2020-11-27T22:40:00");
+            const now = new Date();
+            const diff = now - goalTime;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("timer").textContent = 
+                `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        }
+
+        // تحديث العداد كل ثانية
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
